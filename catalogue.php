@@ -22,16 +22,21 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <link rel="icon" href="icon.ico" >
+    <link rel="icon" href="media\icon\icon.ico" >
     <title>Catalogue</title>
 
+
+    <link href="https://fonts.googleapis.com/css2?family=Pushster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pushster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style1.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    
+    <script src="https://kit.fontawesome.com/d0217dd888.js" crossorigin="anonymous"></script>
 
     
 
@@ -101,23 +106,39 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
       }
 
       .py-5 {
-      padding-top: 3.5rem!important; 
-      padding-bottom: 3rem!important;
+        padding-top: 3.5rem!important; 
+        padding-bottom: 3rem!important;
       }
 
-    .py-4 {
-    padding-top: 1.5rem!important;
-    padding-bottom: 0rem!important; 
-    }
+      .py-4 {
+        padding-top: 1.5rem!important;
+        padding-bottom: 0rem!important; 
+      }
 
-    .my-4 {
-    margin-top: 1.5rem!important;
-    margin-bottom: 0rem!important; 
-    }
-    button, a{
-      text-decoration: none;
-      
-    }
+      .my-4 {
+        margin-top: 1.5rem!important;
+        margin-bottom: 0rem!important; 
+      }
+      button, a{
+        text-decoration: none;
+      }
+
+      .fs-4{
+        font-family: 'Pushster', cursive;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .btns{
+        background: transparent;
+        border: none;
+        outline: none;
+        color: grey;
+      }
+
+      .btns i:hover{
+        cursor: pointer;
+      }
 
     </style>
 
@@ -129,7 +150,7 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <img src="icon.ico" alt="logo" width="50px" height="50px">
+        <img src="media\icon\icon.ico" alt="logo" width="50px" height="50px">
         <span class="fs-4">Wall-it</span>
       </a>
 
@@ -164,7 +185,7 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a href="addPanier.php?id=<?= $line['id'] ?>">Voir</a></button>
                     </div>                    
                     <small class="text-muted"><?= $line['prix'] ?>€</small>
-                    <button onclick="Toggle1()" id="btn1"> <svg xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24"><path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"/></svg></button>
+                    <button onclick="Toggle1()" id="btnh1" class="btns"><i class="fa-solid fa-heart"></i></button>
                 </div>
                 </div>
             </div>
@@ -172,10 +193,10 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
 
         <script>
-          var btnvar1 = document.getElementById('btn1');
+          var btnvar1 = document.getElementById('btnh1');
           function Toggle1(){
             if (btnvar1.style.color=="red") {
-              btnvar1.style.color=="grey"
+              btnvar1.style.color="grey"
               
             }
             else{

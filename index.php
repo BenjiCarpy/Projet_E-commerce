@@ -60,9 +60,7 @@
         </div>
                 
         <div class="image">
-
             <img src="media/pc-hardware.png" alt="image">
-
         </div>
                 
       

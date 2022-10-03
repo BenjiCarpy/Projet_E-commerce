@@ -64,11 +64,18 @@ include_once("connexionDB.php");
     } 
 
     .containt{
-        width: 50%;
         height: auto;
-        flex: 50%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
         padding: 30px;
         text-align: center;
+        width: 50%;
+        justify-content: center;
+    }
+
+    form{
+        width: 100%;
     }
 
     
@@ -77,7 +84,7 @@ include_once("connexionDB.php");
 
 <body>
 
-<div class="content">
+<div class="containt">
         <form name="form" action="registerVald.php" method="POST">
             <!-- Début du formulaire -->
 

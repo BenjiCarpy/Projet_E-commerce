@@ -66,11 +66,18 @@ include_once("connexionDB.php");
     } 
 
     .containt{
-        width: 50%;
         height: auto;
-        flex: 50%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
         padding: 30px;
         text-align: center;
+        width: 50%;
+        justify-content: center;
+    }
+
+    form{
+        width: 100%;
     }
 
 </style>
@@ -92,9 +99,8 @@ include_once("connexionDB.php");
                 <input type="password" class="form-control" id="floatingPassword" placeholder="mot de passe">
             </div>
 
-            <div class="checkbox mb-3">
-                <label>
-                <input type="checkbox" value="remember-me">Se souvenir</label>
+            <div class="checkboxmb-3">
+                <label><input type="checkbox" value="remember-me">Se souvenir</label>
             </div>
 
             <input id="btn" type="submit" name="ConnexionVald" value="Se connecter" />
