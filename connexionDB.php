@@ -17,8 +17,8 @@ class Connexiondb{
     */
     private $host = "localhost";
     private $db = "wallidb";
-    private $user = "btssio";
-    private $pass = "btssio";
+    private $user = "root";
+    private $pass = "";
     private $sgbd = "mysql";
 
     protected $cnx;
@@ -31,7 +31,7 @@ class Connexiondb{
 
 
 
-    public function connectDB(){
+    private function connectDB(){
         try{
             $this->cnx = new PDO("$this->sgbd:host=$this->host;dbname=$this->db", $this->user,$this->pass);
         } catch (PDOException $e){
@@ -40,13 +40,16 @@ class Connexiondb{
     }
      
 
-    // Execute une requête SQL paramétrée
-    protected function executeRequete($sql, $vars = null)
+    // Execute une requête SQL préparé
+    public function executeRequete($sql, $vars = null)
     {
         // Exécution d'une requête préparée
         $rqt = $this->cnx->prepare($sql);
         $rqt->execute($vars);
-        return $rqt;
+
+        $results = $rqt->fetch(PDO::FETCH_ASSOC);
+
+        return $results;
     }
 
 
