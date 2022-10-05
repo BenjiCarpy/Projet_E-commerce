@@ -17,8 +17,8 @@ class Connexiondb{
     */
     private $host = "localhost";
     private $db = "wallidb";
-    private $user = "root";
-    private $pass = "";
+    private $user = "btssio";
+    private $pass = "btssio";
     private $sgbd = "mysql";
 
     protected $cnx;
@@ -71,10 +71,9 @@ class Connexiondb{
         $this->cnx = null;
     }
 
-
-
 }
 
     $cnx = new Connexiondb();
+    
 ?>
 

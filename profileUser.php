@@ -33,7 +33,7 @@
         ?>
                 <!--id du client-->
                 <div class="text">
-                    <p>Votre identifiant: <?= $_SESSION['connectedUser']['identifiant_utilisateur']?> </p>
+                    <p>Votre pseudo: <?= $_SESSION['connectedUser']['identifiant_utilisateur']?> </p>
                 </div>
 
                 <!--Nom du client-->
@@ -60,14 +60,15 @@
                 <div class="text">
                     <p>Votre adresse : <?= $_SESSION['connectedUser']['adresse'] . ' , ' . $_SESSION['connectedUser']['code_postal'] .' , '. $_SESSION['connectedUser']['ville'] ?></p>
                 </div>
-                <a href="index.php"><img src="media\icon\left-arrow-svgrepo-com.svg" alt="Accueil"></a>
+                <a href="index.php"><img src="media\icon\left-arrow-svgrepo-com.svg" alt="Accueil" width="20px" height="20px"></a>
+                <a href="modifierProfile.php">Modifier</a>
+               
         <?php
             } else {
                 header('Location: login.php');
                 exit;
             }
         ?>
-
 
     </div>
 

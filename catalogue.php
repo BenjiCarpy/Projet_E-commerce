@@ -158,7 +158,7 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
         <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="panier.php" class="nav-link">Panier</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Favoris</a></li>
-        <li class="nav-item"><a href="formulaire.php" class="nav-link">Compte</a></li>
+        <li class="nav-item"><a href="profileUser.php" class="nav-link">Compte</a></li>
       </ul>
     </header>
   </div>
