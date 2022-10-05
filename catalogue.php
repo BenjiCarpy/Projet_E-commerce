@@ -158,7 +158,7 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
         <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="panier.php" class="nav-link">Panier</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Favoris</a></li>
-        <li class="nav-item"><a href="profileUser.php" class="nav-link">Compte</a></li>
+        <li class="nav-item"><a href="formulaire.php" class="nav-link">Compte</a></li>
       </ul>
     </header>
   </div>
@@ -182,7 +182,7 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a href="addPanier.php?id=<?= $line['id'] ?>">Acheter</a></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="addPanier.php?id=<?= $line['id'] ?>">Voir</a></button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><a href="descriptionProd.php?id=<?= $line['id'] ?>">Voir</a></button>
                     </div>                    
                     <small class="text-muted"><?= $line['prix'] ?>€</small>
                     <button onclick="Toggle1()" id="btnh1" class="btns"><i class="fa-solid fa-heart"></i></button>
@@ -278,5 +278,4 @@ $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
       
-  </body>
-</html>
+ 
