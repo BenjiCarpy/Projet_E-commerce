@@ -37,18 +37,18 @@ CREATE TABLE `catalogue_tous` (
 
 
 DROP VIEW IF EXISTS `catalogue_tous1`;
-CREATE TABLE `catalogue_tous1` (`Nom de la catégorie` varchar(50), `Nom du produit` varchar(50));
+CREATE TABLE `catalogue_tous1` ();
 
 
 DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE `categorie` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `nom_categorie` varchar(50) NOT NULL,
   `description_categorie` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `categorie` (`id`, `nom_categorie`, `description_categorie`) VALUES
+INSERT INTO `categorie` (`id_categorie`, `nom_categorie`, `description_categorie`) VALUES
 (1,	'Boitier',	NULL),
 (2,	'Alimentation',	NULL),
 (3,	'Carte Mère',	NULL),
@@ -114,7 +114,7 @@ CREATE TABLE `produit` (
   PRIMARY KEY (`id`),
   KEY `id_categorie_prod` (`id_categorie_prod`),
   KEY `id_commande_prod` (`id_commande_prod`),
-  CONSTRAINT `produit_ibfk_2` FOREIGN KEY (`id_categorie_prod`) REFERENCES `categorie` (`id`),
+  CONSTRAINT `produit_ibfk_2` FOREIGN KEY (`id_categorie_prod`) REFERENCES `categorie` (`id_categorie`),
   CONSTRAINT `produit_ibfk_3` FOREIGN KEY (`id_commande_prod`) REFERENCES `commande` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -171,9 +171,10 @@ INSERT INTO `utilisateur` (`id`, `id_adresse`, `id_commande`, `identifiant_utili
 (5,	NULL,	NULL,	'-+-',	'PERRAULT',	'Lucas',	'MonMail@gmail.com',	'0693816203',	'ouioui'),
 (6,	NULL,	NULL,	'GTAline',	'GARDEAU',	'Garrisson',	'G.garrisson@gmail.com',	'02568920',	'GGARDEAU50'),
 (7,	NULL,	NULL,	'Dtm626',	'darren',	'mellon',	'darren.mellon626@gmail.com',	'0693118277',	'jesaispas'),
-(8,	NULL,	NULL,	'a.kassir',	'Abdel',	'Kassir',	'knfj@gmail.com',	'0692004875',	'1234');
+(8,	NULL,	NULL,	'a.kassir',	'Abdel',	'Kassir',	'knfj@gmail.com',	'0692004875',	'1234'),
+(9,	NULL,	NULL,	'admin',	'Hmd',	'Ilan',	'admin@gmail.com',	'0692004875',	'97410');
 
 DROP TABLE IF EXISTS `catalogue_tous1`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `catalogue_tous1` AS select `c`.`nom_categorie` AS `Nom de la catégorie`,`p`.`nom_prod` AS `Nom du produit` from (`produit` `p` join `categorie` `c` on((`c`.`id` = `p`.`id_categorie_prod`)));
 
--- 2022-10-03 17:13:02
+-- 2022-10-11 06:03:30
