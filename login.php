@@ -104,7 +104,7 @@ include_once("connexionDB.php");
                 <label><input type="checkbox" value="remember-me">Se souvenir</label>
             </div>
 
-            <input id="btn" type="submit" name="ConnexionVald" value="Se connecter" />
+            <input id="btn" type="submit" name="loginVald" value="Se connecter" />
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
             <p>Vous n'avez pas de compte ? <a href="register.php">S'inscrire</a></p>
         </form>

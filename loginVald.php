@@ -21,8 +21,14 @@ if (!empty($results)) {
         session_start();
         // On enregistre les informations de l'utilisateur
         $_SESSION["connectedUser"] = $results;
-        header('Location: profileUser.php');
-        exit;
+        //On vérifie si l'utilisateur est un administrateur ou pas
+        if ($_SESSION["connectedUser"]["administrateur"] == "oui"){
+            header('Location: profileAdmin.php');
+            exit;
+        }else{
+            header('Location: profileUser.php');
+            exit;
+        }
     } else {
         // Sinon si les mots de passe sont différents (le mdp est erroné) => On renvoi une erreur
         echo "Email ou mot de passe erroné";
