@@ -218,34 +218,9 @@ nav .bar-nav {
         flex-direction: column;
 
     }
-    
-}
-
-#dark_cover {
-
-    top: calc((100vh + 150px) / -2); /*( ( (100vh + 150 px + 100vh) - 100vh) / 2) * -1 on veut négatif car le cover dépasse de l'écran */
-    left: calc((100vw + 150px) / -2);
-    position: fixed;
-    width: 150px;
-    height: 150px;
-    z-index: 99;
-    border-radius: 50%;
-    border-color: black;
-    border-style: solid;
-    border-width: 100vh 100vw;
-    transition: all 1s;
-    
-}
-
-#dark_cover:hover {
-    
-    transform: scale(2);
 
 }
 
-
-.btn-group a{
-    text-decoration: none;
-
-
+#profileNav a {
+    margin-right: 0.2em;
 }
