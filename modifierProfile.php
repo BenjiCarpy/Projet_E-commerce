@@ -42,6 +42,7 @@ $cnx1 = new Connexiondb();
         <br><br>
         <label for="adresse">Pays :</label> <input type="text" name="pays" id="pays" value="<?= $_SESSION['connectedUser']['pays'] ?>" />
         <br><br>
+
         <input type="submit" name="update" value="Modifier" />
 
     </form>

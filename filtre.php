@@ -325,7 +325,7 @@
                   
                   <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="addPanier.php?id=<?= $line['id'] ?>">Acheter</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="addPanier.php?id=<?= $line['id'] ?>">Panier</a></button>
                         <button type="button" class="btn btn-sm btn-outline-secondary"><a href="descriptionProd.php?id=<?= $line['id'] ?>">Voir</a></button>
                       </div>                    
                       <small class="text-muted"><?= $line['prix'] ?>€</small>
