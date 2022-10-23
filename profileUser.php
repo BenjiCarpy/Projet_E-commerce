@@ -56,13 +56,25 @@
                     <p>Votre adresse mail : <?= $_SESSION['connectedUser']['mail_utilisateur'] ?></p>
                 </div>
 
-                <!--Adresse du client-->
+                <!--Pays du client-->
                 <div class="text">
-                    <p>Votre adresse : <?= $_SESSION['connectedUser']['adresse'] . ' , ' . $_SESSION['connectedUser']['code_postal'] .' , '. $_SESSION['connectedUser']['ville'] ?></p>
+                    <p>Votre Pays : <?= $_SESSION['connectedUser']['pays'] ?></p>
                 </div>
-                <a href="index.php"><img src="media\icon\left-arrow-svgrepo-com.svg" alt="Accueil" width="20px" height="20px"></a>
-                <a href="modifierProfile.php">Modifier</a>
-               
+
+                <!--Ville du client-->
+                <div class="text">
+                    <p>Votre Pays : <?=$_SESSION['connectedUser']['ville'] ?></p>
+                </div>
+
+                <!--Code postal du client-->
+                <div class="text">
+                    <p>Votre Code postal : <?= $_SESSION['connectedUser']['code_postal'] ?></p>
+                </div>
+
+                <nav id="profileNav">
+                    <a href="index.php"><img src="media\icon\left-arrow-svgrepo-com.svg" alt="Accueil" width="20px" height="20px"></a>
+                    <a href="modifierProfile.php">Modifier le profil</a>
+                </nav>
         <?php
             } else {
                 header('Location: login.php');
