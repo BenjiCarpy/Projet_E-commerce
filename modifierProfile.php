@@ -36,7 +36,11 @@ $cnx1 = new Connexiondb();
         <br><br>
         <label for="email">E-mail :</label> <input type="text" name="email" id="email" value="<?= $_SESSION['connectedUser']['mail_utilisateur'] ?>" />
         <br><br>
-        <label for="adresse">Adresse :</label> <input type="text" name="adresse" id="adresse" value="<?= $_SESSION['connectedUser']['adresse_utilisateur'] ?>" />
+        <label for="adresse">Ville :</label> <input type="text" name="ville" id="ville" value="<?= $_SESSION['connectedUser']['ville'] ?>" />
+        <br><br>
+        <label for="adresse">Code Postal :</label> <input type="text" name="code_pos" id="code_pos" value="<?= $_SESSION['connectedUser']['code_postal'] ?>" />
+        <br><br>
+        <label for="adresse">Pays :</label> <input type="text" name="pays" id="pays" value="<?= $_SESSION['connectedUser']['pays'] ?>" />
         <br><br>
         <input type="submit" name="update" value="Modifier" />
 
