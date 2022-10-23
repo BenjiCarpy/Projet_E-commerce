@@ -36,8 +36,11 @@ $cnx1 = new Connexiondb();
         <br><br>
         <label for="email">E-mail :</label> <input type="text" name="email" id="email" value="<?= $_SESSION['connectedUser']['mail_utilisateur'] ?>" />
         <br><br>
+        <!--
         <label for="adresse">Adresse :</label> <input type="text" name="adresse" id="adresse" value="<?= $_SESSION['connectedUser']['adresse_utilisateur'] ?>" />
+        -->
         <br><br>
+
         <input type="submit" name="update" value="Modifier" />
 
     </form>

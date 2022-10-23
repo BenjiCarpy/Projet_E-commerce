@@ -56,10 +56,10 @@
                     <p>Votre adresse mail : <?= $_SESSION['connectedUser']['mail_utilisateur'] ?></p>
                 </div>
 
-                <!--Adresse du client-->
+                <!--Adresse du client
                 <div class="text">
                     <p>Votre adresse : <?= $_SESSION['connectedUser']['adresse'] . ' , ' . $_SESSION['connectedUser']['code_postal'] .' , '. $_SESSION['connectedUser']['ville'] ?></p>
-                </div>
+                </div>-->
                 <a href="index.php"><img src="media\icon\left-arrow-svgrepo-com.svg" alt="Accueil" width="20px" height="20px"></a>
                 <a href="modifierProfile.php">Modifier</a>
                
