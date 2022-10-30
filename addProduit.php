@@ -172,23 +172,23 @@
 
 <body>
   <header>
-  <!-- En-tête  -->
+    <!-- En-tête  -->
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <img src="media\icon\icon.ico" alt="logo" width="50px" height="50px">
-            <span class="fs-4">Wall-it</span>
+          <img src="media\icon\icon.ico" alt="logo" width="50px" height="50px">
+          <span class="fs-4">Wall-it</span>
         </a>
 
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="panier.php" class="nav-link">Panier</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Favoris</a></li>
-            <li class="nav-item"><a href="formulaire.php" class="nav-link">Compte</a></li>
-        </ul>
-        </header>
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="catalogue.php" class="nav-link" aria-current="page"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAXRJREFUWEftl/1NAzEMxV8ngA0KE0AnKGzACGwCbMIKTFA2gBFgA5gA9KoEGV+cODEnndDlv1P88euzz75usLCzWRgP/iXQJYBDUvoawGtE9ahCGeY0QXwACEFFgDRMFiYENQqkYT4TzUlUqRGgEsxVAnkGEILqBbJgciPzPgTVA9SCyT0UgvICeWHCUB6gXpgQVAtoFGYYqgYUhRmCsoD+CqYbqgRUmsC76I4CwLgvYs8VJ7oGstZBq9e8+/RLGU6gdKI3ANtC9LmAmIo5z3POJQC9AzizgHhxmy7vhFIanHZ7GUipyl/9BIAlkUeW7CFdPCaVjo+1UkhnaWf1ma50qWmtmD++I0BcpBfOLqZKN8J2FqCS7JrPKvfsQJbCVuIVKJduVciaY6tCVKD5plRsmr61wchJm//SOOeg2+zX/pJeNaB7AHLAubM5DLnHGH9yWp8VdOKyLX2SOPJOTKgMl2kRprVcRxKGfVoKhRP0Blgc0DeLW4ElGWlZGwAAAABJRU5ErkJggg=="/><!--Home--></a></li>
+            <li class="nav-item"><a href="panier.php" class="nav-link"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAetJREFUWEftl70yBEEQx39XpaS8ATKJwhvwBHgCRDI8gCqUBzhCAh9PgFTEC/gIJUjEiAXUv2p2a3bvY7t3R7ngpurqavf+3fOb7p6euRYDNloDxsMQqCojwwh5I/RTZfAHv58D65nfcsr+A0gsOccgAD0Bc70iFGdkDTgLLx6B+YTpUppWg78jYNsCNA68AWNBLCCBpRifkd9F4NYCJE3PlTSgUnoegv0XoIXno6oPLQOXQa1oTTUAyUz3gN3wcA1oDjOQhAKZCBYrwFVDKKV9NvjQdlcWXECHwFawuABU7HWH0vMRGSviWrALKM65ilFO9F1nxDu3sN0zZ1U1lOniMCvEhVU5yBYAfTQK290LpD7RdkxskXakS0bWCE0Cr5ZZjJqu0fEASavdtRQmvIubmRFCMtWemmDPBmuNkJzFBZmqJ3WsxQNUPkoKLd8Rpb5SD5AcxUeJwq9nbwvom24vUIri3gd0fHQdXqCsltS9s1uAN1vJgQSgelKDyy9WDirtsvy6UbarEyHH3H5pE6DjcDl/ATaBmy7TWzQFs7pAujacRp6egekSkEXTqA/FxjvAQfTiGxgtebdokgHNAPfASPB4AmyUvFs0yYDkSBPqbHuP/p2UJ7BoktSQf/sYLeoWtdG9XzYEqorZL2BcVCUCR92nAAAAAElFTkSuQmCC"/><!--Panier--></a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAdhJREFUWEftl+0xBTEUht9bAR3QASqgA1SAClABHaACVIAOrgpQATrQAfOYxGSy2T35+rFmbmbun83JyZP3fCR3oZmNxcx4tAKyIlKi0LakDUnrkt4kvRrOsd+S9CXpM8P+150FtCnpStLByOaPks4lfbj5UvuB2ykgIG6dIlNioMClO9xFpv2JJA6TDXQn6SiyJkxL923PhWMKFHuUI8T8CF84biSdxQ5SCqHMQ2D4LOk4CIufIjyA70ZOS+wPY6ViIE7yHsh+72CmlAjVLLVHwR2X+MmkRgnyhkFlUCnkiDW89NeWoTssFUrFMsgnDpUEItH23RzVk7NBBsPAhANQvYynsIrjkCGhJ0dKq9fUwLAG5V/cYvZgr6RC38EOVo+qhfHrknvNQSHaA4r9jxwKq2xQkq0xcutpLeQPfcysMowBWXPGlCNl2XOEfWvQWnI6dU+o+EoyO7VXgv5zGsjSAyqGyb7LPEfsoAUq9jV6xVi9pgdUNgxKWEDYtEAVweQC1UIVw5QAlUJVwZQC5UJVw9QAWVBNMLVAY1AUSPgOz3k9Dm6AnCobuzZSfwS8bRVMi0JjzZPv1TA9gOLwNcH0AsJPySN/8uXQkkM9nyR/vlZAlqyzU+gH9xZ1JW/TivIAAAAASUVORK5CYII="/><!--Favoris--></a></li>
+            <li class="nav-item"><a href="formulaire.php" class="nav-link"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAhFJREFUWEftl/0xREEQxFsEhEAEiAARIAJEgAgQASIgA0SACBABIRAB9VO7VXN7+zXvjnqlzH9btTfTr6end25BI4uFkeHRnwK0JOlQ0qaktcD0s6QHSZeS3oewP5ShHUlXkgCVC8AcSLr1ghoC6FTSSWehM0nc7w4vIFrzZLK/hIK0iaB9AFg1d9Yl0cqu8AIicSx2J4nW5YJWbRtdAaorPICWJb2GrB+SOJeEi7beJC2G+yvh3ATlAQQbNyFjjZ1Y1LK02ytwDyAr5h6xeu9/f4gH0OgYshpCO+iipiH0Fn3qRzQEo3bK0AjaaE0Z1hCdfK6iJlnqQwBEK4+h0kY4WwA/6kPUHZVTR8oR+LXxmbQV+NR+76jbH3umLC2KYI8Kr/3Fb7/2TXEOvTCUIR5R3rTa+oHgo9i78XkA0Z49zwibxxW9sbQ1owcQhsgyBiuzBCsKSxuPbjFagJiU80xraAUtqTk1XoQv2WhukjVAMMMyZnXS86imX5/6FqAwyyxTNUBQHL8Q+4et7s0vQQVb6Cgud+TeyvWtBAgB06oYLvsvCCR9do4l4VcTUQJkH9EhbSqJ1raPGlOrbQnQp8nYEr538qq5c8UY7/tQhWmaddxTwFab6Cj+Y/m+lwNk9YOZcZ5noBv+8RJTOsoBGrQLOxBX85daFtsEnROUOgqXrpK7mH/egp0Z7z+gFoWjY+gLrcNtJQd+2ekAAAAASUVORK5CYII="/><!--Compte--></a></li>
+          </ul>
+      </header>
     </div>
-</header>
+  </header>
 
 <div class="album py-5 bg-light">
     <div class="container">
@@ -226,6 +226,8 @@
         </div>
 
         <button type="submit" name="valider" class="btn btn-primary">Ajouter un nouveau produit</button>
+        <button type="button" name="retour" class="btn btn-primary"><a href="vueProduit.php">Retour</a></button>
+
     </form>
 
         </div>

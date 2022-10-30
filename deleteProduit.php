@@ -2,6 +2,7 @@
 require('connexionDB.php');
 
 $id = $_GET['id'];
+var_dump($id);
 $sql = "DELETE FROM produit WHERE id='" . $_GET['id'] . "'";
 
 
