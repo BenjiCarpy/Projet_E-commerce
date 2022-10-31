@@ -17,8 +17,8 @@ class Connexiondb{
     */
     private $host = "localhost";
     private $db = "wallidb";
-    private $user = "root";
-    private $pass = "benji";
+    private $user = "btssio";
+    private $pass = "btssio";
     private $sgbd = "mysql";
 
     protected $cnx;

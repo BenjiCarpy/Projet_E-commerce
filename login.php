@@ -1,13 +1,3 @@
-<?php
-/**
- * @author Benjamin Carpy <benjamin.carpys@gmail.com>
- * @copyright Copyright (c) 2002, Benjamin Carpy 
- * @version 1.0
- */
-
-include_once("connexionDB.php");
-
-?>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -82,34 +72,73 @@ include_once("connexionDB.php");
     }
 
 </style>
+    <body>
+        <div class="containt">
+            <form name="form" action="login.php" method="POST">
+                <img class="mb-4" src="media/icon/icon.ico" alt="" width="72" height="57">
+                <h1 class="h3 mb-3 fw-normal">Identification</h1>
+                <div class="form-floating">
+                    <label for="floatingInput">Email</label>
+                    <input type="email" name="mail" class="form-control" id="floatingInput" placeholder="john.michon@gmail.com">
+                </div>
+                <div class="form-floating">
+                <label for="floatingPassword">Mot de passe</label>
+                    <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder="mot de passe">
+                </div>
+                <div class="checkboxmb-3">
+                    <label><input type="checkbox" value="remember-me">Se souvenir</label>
+                </div>
 
+                <input id="btn" type="submit" name="login" value="Se connecter" />
+                <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+                <p>Vous n'avez pas de compte ? <a href="register.php">S'inscrire</a></p>
+            </form>
+        </div>
 
-
-<body>
-    <div class="containt">
-        <form name="form" action="loginVald.php" method="POST">
-            <img class="mb-4" src="media/icon/icon.ico" alt="" width="72" height="57">
-            <h1 class="h3 mb-3 fw-normal">Identification</h1>
-
-            <div class="form-floating">
-                <label for="floatingInput">Email</label>
-                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="john.michon@gmail.com">
-            </div>
-            <div class="form-floating">
-            <label for="floatingPassword">Mot de passe</label>
-                <input type="password" name="pswd" class="form-control" id="floatingPassword" placeholder="mot de passe">
-            </div>
-
-            <div class="checkboxmb-3">
-                <label><input type="checkbox" value="remember-me">Se souvenir</label>
-            </div>
-
-            <input id="btn" type="submit" name="loginVald" value="Se connecter" />
-            <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-            <p>Vous n'avez pas de compte ? <a href="register.php">S'inscrire</a></p>
-        </form>
-    </div>
-
-</body>
-
+    </body>
 </html>
+
+<?php
+include_once("connexionDB.php");
+$cnx = new Connexiondb();
+    try{
+        $cnx = new PDO("mysql:host=localhost;dbname=wallidb", "btssio", "btssio");
+        // Set the PDO error mode to exception
+        $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e){
+        die("ERROR: Could not connect. " . $e->getMessage());
+    }
+    try{    
+        if (!empty($_POST['mail']) && !empty($_POST['pass'])) {
+            $mail = $_POST['mail'];
+            $pass = $_POST['pass'];
+            //var_dump($mail);
+            //var_dump($pass);
+            $sql = ('SELECT * FROM utilisateur WHERE mail_utilisateur = :mail');
+            $stmt = $cnx->prepare($sql);
+            $stmt->bindParam(':mail', $_POST["mail"]);
+            $stmt->execute();
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            //var_dump($res);
+            //var_dump($pass);
+            if (!empty($res)) {   
+                $passwordHash = $res['mdp_utilisateur'];
+                // Si le mot de passe de l'utilisateur correspond à celui envoyé
+                if (password_verify($pass, $passwordHash)) {
+                    // On démarre une session
+                    session_start();
+                    // On enregistre les informations de l'utilisateur
+                    $_SESSION["connectedUser"] = $res;
+                    header('Location: profileUser.php');
+                    exit;
+                } else {
+                    print "Mot de passe invalides";
+                }
+            } else {
+                print "Identifiants invalides";
+            }
+        }
+    } catch(PDOException $e){
+        die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    }    
+?>

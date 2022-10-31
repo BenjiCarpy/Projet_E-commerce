@@ -7,10 +7,6 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-DROP DATABASE IF EXISTS `wallidb`;
-CREATE DATABASE `wallidb` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `wallidb`;
-
 DROP TABLE IF EXISTS `adresse_utilisateur`;
 CREATE TABLE `adresse_utilisateur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -119,7 +115,7 @@ CREATE TABLE `produit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `produit` (`id`, `id_categorie_prod`, `id_commande_prod`, `nom_prod`, `description_produit`, `prix`, `stock`, `image`) VALUES
-(1,	1,	NULL,	'Fractal Design define R6 Black',	'Digne héritier de la série Define, le boîtier Define R6 de Fractal Design va au delà des attentes. Ses nombreuses caractéristiques intelligemment conçues à l\'intention des passionnés en font un boîtier silencieux prêt à recevoir un système puissant et expansible.',	219.95,	8,	'https://media.ldlc.com/r1600/ld/products/00/04/76/70/LD0004767066_2.jpg'),
+(1,	1,	NULL,	'Fractal Design define R6 Black',	'hvyguhn',	219.95,	5,	'https://media.ldlc.com/r1600/ld/products/00/04/76/70/LD0004767066_2.jpg'),
 (2,	1,	NULL,	'Be quiet ! Pure base 500Dx',	'The be quiet! Pure Base 500DX is a mid-tower case with a quiet design that allows you to assemble almost any configuration based on a mini-ITX, micro-ATX or ATX motherboard. The ARGB backlighting also adds a touch of gaming to the case.',	136.95,	11,	'https://media.ldlc.com/bo/images/fiches/bo%C3%AEtier_pc/be%20quiet/pure_base_500/bequiet_500dx.jpg'),
 (3,	1,	NULL,	'In win 101C BLANC',	'Le boîtier moyen tour IN WIN 101C dispose d\'une importante capacité d\'agencement et vous offrira une grande flexibilité pour accueillir la configuration de vos rêves. Son style moderne avec un affichage LED RGB en façade et sa conception en acier et verre trempé offrent un résultat réussi.',	84.95,	5,	'https://media.ldlc.com/r1600/ld/products/00/04/60/14/LD0004601445_2.jpg'),
 (4,	1,	NULL,	'Fractal Design Meshify c tg (noir)',	'Intelligemment conçu, le boîtier Meshify C de Fractal Design s\'adresse avant tout à toutes les personnes recherchant un boîtier silencieux prêt à recevoir un système puissant et expansible de refroidissement par air ou par liquide mais également à ceux qui recherche un boîtier au look ravageur.',	139.96,	2,	'https://media.ldlc.com/r1600/ld/products/00/04/58/61/LD0004586193_2.jpg'),
@@ -155,7 +151,7 @@ CREATE TABLE `utilisateur` (
   `prenom_utilisateur` varchar(50) NOT NULL,
   `mail_utilisateur` varchar(50) NOT NULL,
   `tel_utilisateur` varchar(50) NOT NULL,
-  `mdp_utilisateur` varchar(50) NOT NULL,
+  `mdp_utilisateur` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_adresse` (`id_adresse`),
   KEY `id_commande` (`id_commande`),
@@ -172,9 +168,12 @@ INSERT INTO `utilisateur` (`id`, `id_adresse`, `id_commande`, `identifiant_utili
 (6,	NULL,	NULL,	'GTAline',	'GARDEAU',	'Garrisson',	'G.garrisson@gmail.com',	'02568920',	'GGARDEAU50'),
 (7,	NULL,	NULL,	'Dtm626',	'darren',	'mellon',	'darren.mellon626@gmail.com',	'0693118277',	'jesaispas'),
 (8,	NULL,	NULL,	'a.kassir',	'Abdel',	'Kassir',	'knfj@gmail.com',	'0692004875',	'1234'),
-(9,	NULL,	NULL,	'admin',	'Hmd',	'Ilan',	'admin@gmail.com',	'0692004875',	'97410');
+(9,	NULL,	NULL,	'admin',	'Hmd',	'Ilan',	'admin@gmail.com',	'0692004875',	'97410'),
+(10,	NULL,	NULL,	'enor',	'ygj',	'fhyg',	'jkj@tyg.re',	'55265484',	'0000'),
+(11,	NULL,	NULL,	'sfg',	'dfg',	'Kassir',	'knfj@gmail.com',	'55265484',	'575'),
+(14,	NULL,	NULL,	'ali',	'abdallah',	'Attoumani',	'lali@info.re',	'0692178598',	'$2y$10$qEG/9sdfQbUjJg8LqbMXx.Ow.HSMZ8uIDIISRTkBd7KreMxFtLvoS');
 
 DROP TABLE IF EXISTS `catalogue_tous1`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `catalogue_tous1` AS select `c`.`nom_categorie` AS `Nom de la catégorie`,`p`.`nom_prod` AS `Nom du produit` from (`produit` `p` join `categorie` `c` on((`c`.`id` = `p`.`id_categorie_prod`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`admindb`@`%` SQL SECURITY DEFINER VIEW `catalogue_tous1` AS select `c`.`nom_categorie` AS `Nom de la catégorie`,`p`.`nom_prod` AS `Nom du produit` from (`produit` `p` join `categorie` `c` on((`c`.`id` = `p`.`id_categorie_prod`)));
 
--- 2022-10-11 06:03:30
+-- 2022-10-31 20:52:41

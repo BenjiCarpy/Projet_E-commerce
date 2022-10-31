@@ -233,8 +233,13 @@
                     <label for="exampleInputEmail1" class="form-label">Description</label>
                     <textarea class="form-control" name="description_produit" id="description_produit" ><?= $line['description_produit'] ?></textarea>
                 </div>
-                <button type="submit" name="valider" class="btn btn-primary">Modifier</button>
+                <button type="submit" name="valider" class="btn btn-primary" onclick="myFunction()">Modifier</button>
                 <button type="button" name="retour" class="btn btn-primary"><a href="vueProduit.php">Retour</a></button>
+                  <script>
+                  function myFunction() {
+                    alert("Êtes-vous certain(e) ?");
+                  }
+                  </script>
             </form>
           </div>
       </div>
