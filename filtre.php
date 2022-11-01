@@ -168,14 +168,14 @@
         font-weight: 700;
         font-size: 16px;
       }
-
+      /*
       .btns{
         background: transparent;
         border: none;
         outline: none;
         color: grey;
       }
-
+      */
       .btns i:hover{
         cursor: pointer;
       }
@@ -187,6 +187,29 @@
       .form-select{
         width: 100%;
         margin-bottom: 5%;
+      }
+
+      .btn{
+        background: #8a2be2;
+        border: 2px solid #8a2be2;
+        color: black;
+      }
+
+      .btn:hover{
+        background: black;
+        border: 2px solid #8a2be2;
+        color: black;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover {
+        text-decoration: none;
+        color: black;
+        
       }
 
     </style>

@@ -129,7 +129,7 @@ $cnx = new Connexiondb();
                     session_start();
                     // On enregistre les informations de l'utilisateur
                     $_SESSION["connectedUser"] = $res;
-                    header('Location: profileUser.php');
+                    header('Location: index.php');
                     exit;
                 } else {
                     print "Mot de passe invalides";
