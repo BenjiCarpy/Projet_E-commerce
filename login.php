@@ -102,7 +102,7 @@
 include_once("connexionDB.php");
 $cnx = new Connexiondb();
     try{
-        $cnx = new PDO("mysql:host=localhost;dbname=wallidb", "btssio", "btssio");
+        $cnx = new PDO("mysql:host=localhost;dbname=walliDB", "btssio", "btssio");
         // Set the PDO error mode to exception
         $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e){
@@ -112,15 +112,15 @@ $cnx = new Connexiondb();
         if (!empty($_POST['mail']) && !empty($_POST['pass'])) {
             $mail = $_POST['mail'];
             $pass = $_POST['pass'];
-            //var_dump($mail);
-            //var_dump($pass);
+            var_dump($mail);
+            var_dump($pass);
             $sql = ('SELECT * FROM utilisateur WHERE mail_utilisateur = :mail');
             $stmt = $cnx->prepare($sql);
             $stmt->bindParam(':mail', $_POST["mail"]);
             $stmt->execute();
             $res = $stmt->fetch(PDO::FETCH_ASSOC);
-            //var_dump($res);
-            //var_dump($pass);
+            var_dump($res);
+            var_dump($pass);
             if (!empty($res)) {   
                 $passwordHash = $res['mdp_utilisateur'];
                 // Si le mot de passe de l'utilisateur correspond à celui envoyé

@@ -136,7 +136,7 @@ include_once("connexionDB.php");
 $cnx = new Connexiondb();
  
     try{
-        $cnx = new PDO("mysql:host=localhost;dbname=wallidb", "btssio", "btssio");
+        $cnx = new PDO("mysql:host=localhost;dbname=walliDB", "btssio", "btssio");
         // Set the PDO error mode to exception
         $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e){
@@ -149,7 +149,7 @@ $cnx = new Connexiondb();
             $prenom=$_POST["prenom"];
             $tel=$_POST["tel"];
             $mail=$_POST["mail"];
-            $pass=password_hash($_POST["pass"], PASSWORD_DEFAULT);;
+            $pass=password_hash($_POST["pass"], PASSWORD_DEFAULT);
             //var_dump($_POST);
             //var_dump($email);
             //var_dump($password);
@@ -164,8 +164,7 @@ $cnx = new Connexiondb();
             $stmt->bindParam(':mail', $_POST["mail"]);
             $stmt->bindParam(':pass', $pass);
             $res = $stmt->execute();
-
-            echo "Inscription réussie";
+            //echo "Inscription réussie";
             header('Location: login.php');
         }
     } catch(PDOException $e){

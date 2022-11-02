@@ -15,10 +15,10 @@ class Connexiondb{
     *   host
     *   @var string  
     */
-    private $host = "ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432";
-    private $db = "d7kgnu9sdj6cua";
-    private $user = "cgdkoflisfjrqi";
-    private $pass = "3d6d9ce3b0bf82dbaca70b5170c191bc5c42e4817bf86db9ffa88dfea6b9993f";
+    private $host = "localhost";
+    private $db = "walliDB";
+    private $user = "btssio";
+    private $pass = "btssio";
     private $sgbd = "mysql";
 
     protected $cnx;
