@@ -18,7 +18,7 @@ CREATE TABLE `adresse_utilisateur` (
   `ville` varchar(50) NOT NULL,
   `pays` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `adresse_utilisateur` (`id`, `code_postal`, `ville`, `pays`) VALUES
 (1,	'97420',	'Petite Ile',	'La Réunion'),
@@ -47,7 +47,7 @@ CREATE TABLE `categorie` (
   `description_categorie` varchar(50) DEFAULT NULL,
   `image_categorie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`id_categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `categorie` (`id_categorie`, `nom_categorie`, `description_categorie`, `image_categorie`) VALUES
 (1,	'Boitier',	NULL,	'https://media.ldlc.com/r374/ld/products/00/05/44/67/LD0005446783_2.jpg'),
@@ -77,7 +77,7 @@ CREATE TABLE `compte_bancaire` (
   PRIMARY KEY (`id`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `compte_bancaire_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `compte_bancaire` (`id`, `id_utilisateur`, `num_carte_bleu`) VALUES
 (1,	1,	'98476546'),
@@ -117,7 +117,7 @@ CREATE TABLE `produit` (
   KEY `id_commande_prod` (`id_commande_prod`),
   CONSTRAINT `produit_ibfk_2` FOREIGN KEY (`id_categorie_prod`) REFERENCES `categorie` (`id_categorie`),
   CONSTRAINT `produit_ibfk_3` FOREIGN KEY (`id_commande_prod`) REFERENCES `commande` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `produit` (`id`, `id_categorie_prod`, `id_commande_prod`, `nom_prod`, `description_produit`, `prix`, `stock`, `image`) VALUES
 (1,	1,	NULL,	'Fractal Design define R6 Black',	'hvyguhn',	219.95,	5,	'https://media.ldlc.com/r1600/ld/products/00/04/76/70/LD0004767066_2.jpg'),
@@ -157,28 +157,30 @@ CREATE TABLE `utilisateur` (
   `mail_utilisateur` varchar(50) NOT NULL,
   `tel_utilisateur` varchar(50) NOT NULL,
   `mdp_utilisateur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_adresse` (`id_adresse`),
   KEY `id_commande` (`id_commande`),
   CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`id_adresse`) REFERENCES `adresse_utilisateur` (`id`),
   CONSTRAINT `utilisateur_ibfk_2` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `utilisateur` (`id`, `id_adresse`, `id_commande`, `identifiant_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `mail_utilisateur`, `tel_utilisateur`, `mdp_utilisateur`) VALUES
-(1,	NULL,	NULL,	'Jean23',	'Jack',	'jean',	'jackie&michel@gmail.com',	'jackie&michel',	'dzsd4z484'),
-(2,	NULL,	NULL,	'Oliwed',	'ESSOB',	'Raphael',	'raphael.essobmussard.ps41819@gmail.com',	'0693367493',	'iaeneioazen'),
-(3,	NULL,	NULL,	'Warz',	'Carpy',	'Benjamin',	'benjamin.carpy@gmail.com',	'0692346919',	'hdehgbfcedhf'),
-(4,	NULL,	NULL,	'Gazo ',	'Houmadi',	'Hilani',	'gazo@gmail.com',	'021252154',	'eiuhtjzehc95467¤⁻@'),
-(5,	NULL,	NULL,	'-+-',	'PERRAULT',	'Lucas',	'MonMail@gmail.com',	'0693816203',	'ouioui'),
-(6,	NULL,	NULL,	'GTAline',	'GARDEAU',	'Garrisson',	'G.garrisson@gmail.com',	'02568920',	'GGARDEAU50'),
-(7,	NULL,	NULL,	'Dtm626',	'darren',	'mellon',	'darren.mellon626@gmail.com',	'0693118277',	'jesaispas'),
-(8,	NULL,	NULL,	'a.kassir',	'Abdel',	'Kassir',	'knfj@gmail.com',	'0692004875',	'1234'),
-(9,	NULL,	NULL,	'admin',	'Hmd',	'Ilan',	'admin@gmail.com',	'0692004875',	'97410'),
-(10,	NULL,	NULL,	'enor',	'ygj',	'fhyg',	'jkj@tyg.re',	'55265484',	'0000'),
-(11,	NULL,	NULL,	'sfg',	'dfg',	'Kassir',	'knfj@gmail.com',	'55265484',	'575'),
-(14,	NULL,	NULL,	'ali',	'abdallah',	'Attoumani',	'lali@info.re',	'0692178598',	'$2y$10$qEG/9sdfQbUjJg8LqbMXx.Ow.HSMZ8uIDIISRTkBd7KreMxFtLvoS');
+INSERT INTO `utilisateur` (`id`, `id_adresse`, `id_commande`, `identifiant_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `mail_utilisateur`, `tel_utilisateur`, `mdp_utilisateur`, `admin`) VALUES
+(1,	NULL,	NULL,	'Jean23',	'Jack',	'jean',	'jackie&michel@gmail.com',	'jackie&michel',	'dzsd4z484',	0),
+(2,	NULL,	NULL,	'Oliwed',	'ESSOB',	'Raphael',	'raphael.essobmussard.ps41819@gmail.com',	'0693367493',	'iaeneioazen',	0),
+(3,	NULL,	NULL,	'Warz',	'Carpy',	'Benjamin',	'benjamin.carpy@gmail.com',	'0692346919',	'hdehgbfcedhf',	0),
+(4,	NULL,	NULL,	'Gazo ',	'Houmadi',	'Hilani',	'gazo@gmail.com',	'021252154',	'eiuhtjzehc95467¤⁻@',	0),
+(5,	NULL,	NULL,	'-+-',	'PERRAULT',	'Lucas',	'MonMail@gmail.com',	'0693816203',	'ouioui',	0),
+(6,	NULL,	NULL,	'GTAline',	'GARDEAU',	'Garrisson',	'G.garrisson@gmail.com',	'02568920',	'GGARDEAU50',	0),
+(7,	NULL,	NULL,	'Dtm626',	'darren',	'mellon',	'darren.mellon626@gmail.com',	'0693118277',	'jesaispas',	0),
+(8,	NULL,	NULL,	'a.kassir',	'Abdel',	'Kassir',	'knfj@gmail.com',	'0692004875',	'1234',	0),
+(9,	NULL,	NULL,	'admin',	'Hmd',	'Ilan',	'admin@gmail.com',	'0692004875',	'97410',	0),
+(10,	NULL,	NULL,	'enor',	'ygj',	'fhyg',	'jkj@tyg.re',	'55265484',	'0000',	0),
+(11,	NULL,	NULL,	'sfg',	'dfg',	'Kassir',	'knfj@gmail.com',	'55265484',	'575',	0),
+(14,	NULL,	NULL,	'ali',	'abdallah',	'Attoumani',	'lali@info.re',	'0692178598',	'$2y$10$qEG/9sdfQbUjJg8LqbMXx.Ow.HSMZ8uIDIISRTkBd7KreMxFtLvoS',	0),
+(15,	NULL,	NULL,	'Bazzoka',	'louis',	'mili',	'b@info.re',	'0692132458',	'$2y$10$hpLu.tpxDA/c8wnKPYUE3OaQpIjHdsFeMmUQzOa8jpYBm6fHBkRA2',	1);
 
 DROP TABLE IF EXISTS `catalogue_tous1`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `catalogue_tous1` AS select `c`.`nom_categorie` AS `Nom de la catégorie`,`p`.`nom_prod` AS `Nom du produit` from (`produit` `p` join `categorie` `c` on((`c`.`id_categorie` = `p`.`id_categorie_prod`)));
 
--- 2022-11-02 05:15:51
+-- 2022-11-02 07:30:44
