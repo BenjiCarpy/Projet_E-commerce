@@ -347,12 +347,12 @@
                   <br>
                   
                   <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="addPanier.php?id=<?= $line['id'] ?>">Panier</a></button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="descriptionProd.php?id=<?= $line['id'] ?>">Voir</a></button>
+                      <div  class="d-grid gap-2 d-md-block">
+                        <button type="button" class="btn btn-sm"><a href="descriptionProd.php?id=<?= $line['id'] ?>">Voir</a></button>
+                        <button type="button" class="btn btn-sm"><a href="addpanier.php?id=<?= $line['id'] ?>">Ajouter au panier</a></button>
                       </div>                    
                       <small class="text-muted"><?= $line['prix'] ?>€</small>
-                      <button onclick="Toggle1()" id="btnh1" class="btns"><i class="fa-solid fa-heart"></i></button>
+                      
                   </div>
                   </div>
               </div>
