@@ -16,7 +16,6 @@
     $rqt = $cnx->getRequete($sql2);
     $res2 = $rqt->fetchAll();
 
-
 ?>
 
 <!doctype html>

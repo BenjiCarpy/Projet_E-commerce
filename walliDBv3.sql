@@ -7,33 +7,8 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-DROP TABLE IF EXISTS `adresse_utilisateur`;
-CREATE TABLE `adresse_utilisateur` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `code_postal` varchar(50) NOT NULL,
-  `ville` varchar(50) NOT NULL,
-  `pays` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `adresse_utilisateur` (`id`, `code_postal`, `ville`, `pays`) VALUES
-(1,	'97420',	'Petite Ile',	'La Réunion'),
-(2,	'97420',	'Petite Ile',	'La Réunion'),
-(3,	'97410',	'Saint Pierre',	'La Réunion'),
-(4,	'97410',	'Saint Pierre',	'La Réunion'),
-(5,	'97420',	'Petite Ile',	'La Réunion'),
-(6,	'18256',	'Marseille',	'France'),
-(7,	'97450',	'Saint Louis',	'La Réunion');
-
-DROP TABLE IF EXISTS `catalogue_tous`;
-CREATE TABLE `catalogue_tous` (
-  `Nom de la catégorie` varchar(50) DEFAULT NULL,
-  `Nom du produit` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-DROP VIEW IF EXISTS `catalogue_tous1`;
-CREATE TABLE `catalogue_tous1` (`Nom de la catégorie` varchar(50), `Nom du produit` varchar(50));
+DROP VIEW IF EXISTS `catalogue_tous`;
+CREATE TABLE `catalogue_tous` (`Nom de la catégorie` varchar(50), `Nom du produit` varchar(50));
 
 
 DROP TABLE IF EXISTS `categorie`;
@@ -41,9 +16,9 @@ CREATE TABLE `categorie` (
   `id_categorie` int NOT NULL AUTO_INCREMENT,
   `nom_categorie` varchar(50) NOT NULL,
   `description_categorie` varchar(50) DEFAULT NULL,
-  `image_categorie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `image_categorie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id_categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 INSERT INTO `categorie` (`id_categorie`, `nom_categorie`, `description_categorie`, `image_categorie`) VALUES
 (1,	'Boitier',	NULL,	'https://media.ldlc.com/r374/ld/products/00/05/44/67/LD0005446783_2.jpg'),
@@ -62,7 +37,7 @@ CREATE TABLE `commande` (
   `prix_total` int NOT NULL,
   `date_commande` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 
 DROP TABLE IF EXISTS `fiche_technique`;
@@ -76,7 +51,7 @@ CREATE TABLE `fiche_technique` (
   KEY `id_prod_fiche_technique` (`id_prod_fiche_technique`),
   CONSTRAINT `fiche_technique_ibfk_1` FOREIGN KEY (`id_prod_fiche_technique`) REFERENCES `produit` (`id`),
   CONSTRAINT `fiche_technique_ibfk_2` FOREIGN KEY (`id_prod_fiche_technique`) REFERENCES `produit` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 
 DROP TABLE IF EXISTS `produit`;
@@ -94,7 +69,7 @@ CREATE TABLE `produit` (
   KEY `id_commande_prod` (`id_commande_prod`),
   CONSTRAINT `produit_ibfk_2` FOREIGN KEY (`id_categorie_prod`) REFERENCES `categorie` (`id_categorie`),
   CONSTRAINT `produit_ibfk_3` FOREIGN KEY (`id_commande_prod`) REFERENCES `commande` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 INSERT INTO `produit` (`id`, `id_categorie_prod`, `id_commande_prod`, `nom_prod`, `description_produit`, `prix`, `stock`, `image`) VALUES
 (1,	1,	NULL,	'Fractal Design define R6 Black',	'hvyguhn',	219.95,	5,	'https://media.ldlc.com/r1600/ld/products/00/04/76/70/LD0004767066_2.jpg'),
@@ -126,29 +101,29 @@ INSERT INTO `produit` (`id`, `id_categorie_prod`, `id_commande_prod`, `nom_prod`
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE `utilisateur` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `id_adresse` int DEFAULT NULL,
   `id_commande` int DEFAULT NULL,
   `identifiant_utilisateur` varchar(50) NOT NULL,
   `nom_utilisateur` varchar(50) NOT NULL,
   `prenom_utilisateur` varchar(50) NOT NULL,
   `mail_utilisateur` varchar(50) NOT NULL,
-  `tel_utilisateur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `mdp_utilisateur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `tel_utilisateur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mdp_utilisateur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  'admin' tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id_adresse` (`id_adresse`),
   KEY `id_commande` (`id_commande`),
   CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`id_adresse`) REFERENCES `adresse_utilisateur` (`id`),
   CONSTRAINT `utilisateur_ibfk_2` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
-INSERT INTO `utilisateur` (`id`, `id_adresse`, `id_commande`, `identifiant_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `mail_utilisateur`, `tel_utilisateur`, `mdp_utilisateur`) VALUES
-(9,	NULL,	NULL,	'admin',	'Hmd',	'Ilan',	'admin@gmail.com',	'0692004875',	'97410'),
-(14,	NULL,	NULL,	'ali',	'abdallah',	'Attoumani',	'lali@info.re',	'0692178598',	'$2y$10$qEG/9sdfQbUjJg8LqbMXx.Ow.HSMZ8uIDIISRTkBd7KreMxFtLvoS'),
-(15,	NULL,	NULL,	'Badoo',	'houmadi',	'hilani',	'a@info.re',	'035654546',	'$2y$10$Cv6t21jU9Mgj5rBoNUMASOyQlZaGV7K.UfT8Vc1hoTWOzx8gwE0ee'),
-(16,	NULL,	NULL,	'Badoo',	'dzdzdzdz',	'houmadi',	'a@ilani.re',	'845845',	'$2y$10$RAaPpn7ysZlNKLBOdQLkYunCeS2qy0koW.iC5rbuF1up8mQPr7O9K'),
-(17,	NULL,	NULL,	'allo',	'ddd',	'houmadi',	'lili@gmail.com',	'035654546',	'$2y$10$d603YDNYXWSsvxsN6LIgPeLp9UE8Ai.Fqq5QsObQFEwwenN7UYIDS');
+INSERT INTO `utilisateur` (`id`, `id_commande`, `identifiant_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `mail_utilisateur`, `tel_utilisateur`, `mdp_utilisateur`, 'admin') VALUES
+(9,	 	NULL,	'admin',	'Hmd',	'Ilan',	'admin@gmail.com',	'0692004875',	'97410',1),
+(14,	NULL,	'ali',	'abdallah',	'Attoumani',	'lali@info.re',	'0692178598',	'$2y$10$qEG/9sdfQbUjJg8LqbMXx.Ow.HSMZ8uIDIISRTkBd7KreMxFtLvoS',0),
+(15,	NULL,	'Badoo',	'houmadi',	'hilani',	'a@info.re',	'035654546',	'$2y$10$Cv6t21jU9Mgj5rBoNUMASOyQlZaGV7K.UfT8Vc1hoTWOzx8gwE0ee',0),
+(16,	NULL,	'Badoo',	'dzdzdzdz',	'houmadi',	'a@ilani.re',	'845845',	'$2y$10$RAaPpn7ysZlNKLBOdQLkYunCeS2qy0koW.iC5rbuF1up8mQPr7O9K',1),
+(17,	NULL,	'allo',	'ddd',	'houmadi',	'lili@gmail.com',	'035654546',	'$2y$10$d603YDNYXWSsvxsN6LIgPeLp9UE8Ai.Fqq5QsObQFEwwenN7UYIDS',0);
 
-DROP TABLE IF EXISTS `catalogue_tous1`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `catalogue_tous1` AS select `c`.`nom_categorie` AS `Nom de la catégorie`,`p`.`nom_prod` AS `Nom du produit` from (`produit` `p` join `categorie` `c` on((`c`.`id_categorie` = `p`.`id_categorie_prod`)));
+DROP TABLE IF EXISTS `catalogue_tous`;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `catalogue_tous` AS select `c`.`nom_categorie` AS `Nom de la catégorie`,`p`.`nom_prod` AS `Nom du produit` from (`produit` `p` join `categorie` `c` on((`c`.`id_categorie` = `p`.`id_categorie_prod`)));
 
 -- 2022-11-09 05:18:57

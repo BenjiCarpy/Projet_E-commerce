@@ -5,22 +5,22 @@
    * @version 1.0
    */
 
-  require_once('connexionDB.php');
-  //include('catalogue.php'); 
+  // require_once('connexionDB.php');
+  // //include('catalogue.php'); 
 
-    //recuperer l'id categorie du filtre
-    $id_categorie = $_GET['id_categorie'];
-    //var_dump($id_categorie);
-    $sql1 = "SELECT * FROM produit
-    INNER JOIN categorie  ON  id_categorie=id_categorie_prod
-    WHERE id_categorie='$id_categorie' ;";
-    $rqt = $cnx->getRequete($sql1);
-    $res = $rqt->fetchAll();
+  //   //recuperer l'id categorie du filtre
+  //   $id_categorie = $_GET['id_categorie'];
+  //   //var_dump($id_categorie);
+  //   $sql1 = "SELECT * FROM produit
+  //   INNER JOIN categorie  ON  id_categorie=id_categorie_prod
+  //   WHERE id_categorie='$id_categorie' ;";
+  //   $rqt = $cnx->getRequete($sql1);
+  //   $res = $rqt->fetchAll();
 
-    //Requete affichage du filtre
-    $sql2 = "SELECT id_categorie, nom_categorie, description_categorie  FROM categorie;"; 
-    $rqt = $cnx->getRequete($sql2);
-    $res2 = $rqt->fetchAll();
+  //   //Requete affichage du filtre
+  //   $sql2 = "SELECT id_categorie, nom_categorie, description_categorie  FROM categorie;"; 
+  //   $rqt = $cnx->getRequete($sql2);
+  //   $res2 = $rqt->fetchAll();
 
 ?>
 
