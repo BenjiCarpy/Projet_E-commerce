@@ -6,7 +6,8 @@ $sql = "DELETE FROM utilisateur WHERE id='" . $_GET['id'] . "'";
 
 
 try {
-    $cnx = new PDO("mysql:host=localhost;dbname=wallidb", "btssio", "btssio");
+    $cnx = new PDO("mysql:host=mysql-wall-it.alwaysdata.net;dbname=wall-it_wallidb", "wall-it", "btssio2");
+        
         // Set the PDO error mode to exception
         $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

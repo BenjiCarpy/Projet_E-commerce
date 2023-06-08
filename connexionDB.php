@@ -15,10 +15,10 @@ class Connexiondb{
     *   host
     *   @var string  
     */
-    private $host = "localhost";
-    private $db = "walliDB";
-    private $user = "btssio";
-    private $pass = "btssio";
+    private $host = "mysql-wall-it.alwaysdata.net";
+    private $db = "wall-it_wallidb";
+    private $user = "wall-it";
+    private $pass = "BTSSIO@25jo";
     private $sgbd = "mysql";
 
     protected $cnx;

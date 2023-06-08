@@ -5,22 +5,22 @@
    * @version 1.0
    */
 
-  // require_once('connexionDB.php');
-  // //include('catalogue.php'); 
+  require_once('connexionDB.php');
+  //include('catalogue.php'); 
 
-  //   //recuperer l'id categorie du filtre
-  //   $id_categorie = $_GET['id_categorie'];
-  //   //var_dump($id_categorie);
-  //   $sql1 = "SELECT * FROM produit
-  //   INNER JOIN categorie  ON  id_categorie=id_categorie_prod
-  //   WHERE id_categorie='$id_categorie' ;";
-  //   $rqt = $cnx->getRequete($sql1);
-  //   $res = $rqt->fetchAll();
+    //recuperer l'id categorie du filtre
+    $id_categorie = $_GET['id_categorie'];
+    //var_dump($id_categorie);
+    $sql1 = "SELECT * FROM produit
+    INNER JOIN categorie  ON  id_categorie=id_categorie_prod
+    WHERE id_categorie='$id_categorie' ;";
+    $rqt = $cnx->getRequete($sql1);
+    $res = $rqt->fetchAll();
 
-  //   //Requete affichage du filtre
-  //   $sql2 = "SELECT id_categorie, nom_categorie, description_categorie  FROM categorie;"; 
-  //   $rqt = $cnx->getRequete($sql2);
-  //   $res2 = $rqt->fetchAll();
+    //Requete affichage du filtre
+    $sql2 = "SELECT id_categorie, nom_categorie, description_categorie  FROM categorie;"; 
+    $rqt = $cnx->getRequete($sql2);
+    $res2 = $rqt->fetchAll();
 
 ?>
 
@@ -347,12 +347,12 @@
                   <br>
                   
                   <div class="d-flex justify-content-between align-items-center">
-                      <div  class="d-grid gap-2 d-md-block">
-                        <button type="button" class="btn btn-sm"><a href="descriptionProd.php?id=<?= $line['id'] ?>">Voir</a></button>
+                      <div class="btn-group">
                         <button type="button" class="btn btn-sm"><a href="addpanier.php?id=<?= $line['id'] ?>">Ajouter au panier</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="descriptionProd.php?id=<?= $line['id'] ?>">Voir</a></button>
                       </div>                    
                       <small class="text-muted"><?= $line['prix'] ?>€</small>
-                      
+                      <button onclick="Toggle1()" id="btnh1" class="btns"><i class="fa-solid fa-heart"></i></button>
                   </div>
                   </div>
               </div>

@@ -66,6 +66,7 @@ tr{
     unset($_SESSION['panier'][$id_del]);
    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +79,7 @@ tr{
 </head>
 
 <body class="panier">
-    <a href="index.php" class="link">Boutique</a>
+    <a href="catalogue.php" class="link">Retour au catalogue</a>
     <section>
         <table>
             <tr>
@@ -88,6 +89,7 @@ tr{
                 <th>Quantité</th>
                 <th>Action</th>
             </tr>
+
             <?php 
               $total = 0 ;
               // liste des produits
@@ -109,6 +111,8 @@ tr{
                     //et aditionner chaque résutats a chaque tour de boucle
                     $total = $total + $product['prix'] * $_SESSION['panier'][$product['id']] ;
                 ?>
+
+
                 <tr>
                     <td><img src="<?=$product['image']?>"></td>
                     <td><?=$product['nom_prod']?></td>
@@ -118,7 +122,7 @@ tr{
                 </tr>
 
             <?php endforeach ;} ?>
-
+            
             <tr class="total">
                 <th>Total : <?=$total?>€</th>
             </tr>

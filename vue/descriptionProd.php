@@ -1,38 +1,43 @@
 <?php 
-  /**
-   * @author 
-   * @copyright Copyright (c) 2002, 
-   * @version 1.0
-   */
+/**
+ * @author 
+ * @copyright Copyright (c) 2002, 
+ * @version 1.0
+ */
 
-  require('connexionDB.php'); 
-  //recuperer l'id
-  $id = $_REQUEST['id'];
-   
-  //Affichez le produit par rapport à l'id
-  $sql1 = "SELECT * FROM produit WHERE id=$id;";
-  $resultat = $cnx->getRequete($sql1);
-  $line = $resultat->fetch();
+require('connexionDB.php'); 
+ //recuperer l'id
+$id = $_GET['id'];
+//Affichez le produit par rapport à l'id
+$sql1 = "SELECT * FROM produit WHERE id=$id;";
+
+$resultat = $cnx->getRequete($sql1);
+$line = $resultat->fetch();
+
+
+
+
+
 ?>
-<!doctype html>
+
+<!Doctype html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
     <link rel="icon" href="media\icon\icon.ico" >
-    <title>Admin</title>
+    <title>Fiche Produit</title>
 
 
     <link href="https://fonts.googleapis.com/css2?family=Pushster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pushster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style/carousel.css">
+    <link rel="stylesheet" type="text/css" href="style1.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -95,35 +100,6 @@
       
       }
 
-
-      /* Scrollbar */
-
-      ::-webkit-scrollbar {
-
-      width: 8px;
-
-      }
-
-      ::-webkit-scrollbar-track {
-
-      border-radius: 10px;
-
-      }
-
-      ::-webkit-scrollbar-thumb {
-
-      border-radius: 10px;
-      background-color: gray;
-
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-
-      background-color:black;
-
-      }
-
-
       .imgProd{
         width: 100%;
         height:225px;
@@ -159,30 +135,18 @@
         font-size: 16px;
       }
 
-      .btns{
-        background: transparent;
-        border: none;
-        outline: none;
-        color: grey;
-      }
+      .img-fluid{
+        max-width: 100%;
+        height: auto;
+      } 
 
-      .btns i:hover{
-        cursor: pointer;
-      }
-
-      .form-select:hover{
-        text-decoration: underline;
-      }
 
     </style>
 
     
   </head>
-
-  
-
-
-<body>
+  <body>
+    
   <header>
     <!-- En-tête  -->
     <div class="container">
@@ -202,83 +166,34 @@
     </div>
   </header>
 
-  <div class="album py-5 bg-light">
-      <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <form method="$_POST">
-                <div class="mb-3">
-                    <input type="hidden" class="form-control" name="id" id="id" value="<?= $line['id'] ?>" >
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nom du produit</label>
-                    <input type="name" class="form-control" name="nom_prod" id="nom_prod" value="<?= $line['nom_prod'] ?>" >
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Image</label>
-                    <input type="text" class="form-control" name="image" id="image"value="<?= $line['image'] ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Categorie</label>
-                    <input type="number" min="0" max="9" class="form-control" name="id_categorie_prod" id="id_categorie_prod" value="<?= $line['id_categorie_prod'] ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Prix</label>
-                    <input type="number" step="0.01" min="0" class="form-control" name="prix" id="prix" value="<?= $line['prix'] ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Stock</label>
-                    <input type="number" min="0" class="form-control" name="stock" id="stock" value="<?= $line['stock'] ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Description</label>
-                    <textarea class="form-control" name="description_produit" id="description_produit" ><?= $line['description_produit'] ?></textarea>
-                </div>
-                <button type="submit" name="valider" class="btn btn-primary" onclick="myFunction()">Modifier</button>
-                <button type="button" name="retour" class="btn btn-primary"><a href="vueProduit.php">Retour</a></button>
-                  <script>
-                  function myFunction() {
-                    alert("Êtes-vous certain(e) ?");
-                  }
-                  </script>
-            </form>
-          </div>
-      </div>
-  </div>
+<main>
 
-</body>
+        <div class="containt">
+          <h2>Fiche Produit</h2>
+        
+            <!--  Utilisation de la methode POST   -->
+            <label for="name">Nom: </label>
+            <?=  $nomProd = $line['nom_prod']; ?><br>
+            <label for="description">Description</label><br>
+            <?= $description_produit = $line['description_produit'] ?>
+
+            <label for="prix">Prix:</label>
+            <?= $prix =$line['prix'] ?><br>
+
+            <label for="stock">Stock:</label>
+            <?= $stock = $line['stock'] ?><br>
+
+            <label for="image">image:</label><br>
+            <img src="<?= $image = $line['image'] ?>" class="img-fluid" alt="<?=  $nomProd = $line['nom_prod']; ?>">  
+        </div>
+
+
+
+        <button type="button" class="btn btn-primary"><a href="addpanier.php?id=<?= $line['id'] ?>">Ajouter au panier</a></button>
+        
+       
+        
+        </main>
+    </body>
 </html>
 
-<?php
-    require_once("connexionDB.php");
-    $cnx = new Connexiondb();
-    try{
-      $cnx = new PDO("mysql:host=mysql-wall-it.alwaysdata.net;dbname=wall-it_wallidb", "wall-it", "btssio2");
-        // Set the PDO error mode to exception
-        $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e){
-        die("ERROR: Could not connect. " . $e->getMessage());
-    }
-    try{
-        // Creer une requete preparer
-        $sql = "UPDATE produit SET nom_prod=:nom_prod, image=:image, id_categorie_prod=:id_categorie_prod, prix=:prix, stock=:stock, description_produit=:description_produit WHERE id=$id;";
-        $stmt = $cnx->prepare($sql);
-        
-        //Bind parameters la variable va être liée en tant que référence
-        $stmt->bindParam(':nom_prod', $_REQUEST['nom_prod']);
-        $stmt->bindParam(':image', $_REQUEST['image']);
-        $stmt->bindParam(':id_categorie_prod', $_REQUEST['id_categorie_prod']);
-        $stmt->bindParam(':prix', $_REQUEST['prix']);
-        $stmt->bindParam(':stock', $_REQUEST['stock']);
-        $stmt->bindParam(':description_produit', $_REQUEST['description_produit']);
-        
-        // Execute la requete preparer
-        $stmt->execute();
-
-        //echo "Records update successfully.";
-
-        //Redirection sur la page vueProduit.php (alternative de 'header')
-        echo "<script type='text/javascript'>document.location.replace('vueProduit.php');</script>";
-    } catch(PDOException $e){
-        die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-    }
-?>

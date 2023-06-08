@@ -10,7 +10,8 @@ $cnx1->executeRequete(" UPDATE utilisateur SET identifiant_utilisateur='" .$_GET
                         tel_utilisateur='".$_GET["tel"]."',
                         mail_utilisateur='".$_GET["email"]."',
                         ville='".$_GET["ville"]."',
-                        pays='".$_GET["pays"]."' , code_postal='".$_GET["code_pos"]."'
+                        pays='".$_GET["pays"]."' ,
+                        code_postal='".$_GET["code_pos"]."'
                         where id ='" .$_SESSION['connectedUser']['id']."';");
 
                         header('Location: cnxProfile.php')

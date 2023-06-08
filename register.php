@@ -136,7 +136,7 @@ include_once("connexionDB.php");
 $cnx = new Connexiondb();
  
     try{
-        $cnx = new PDO("mysql:host=localhost;dbname=walliDB", "btssio", "btssio");
+        $cnx = new PDO("mysql:host=mysql-wall-it.alwaysdata.net;dbname=wall-it_wallidb", "wall-it", "BTSSIO@25jo");
         // Set the PDO error mode to exception
         $cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e){

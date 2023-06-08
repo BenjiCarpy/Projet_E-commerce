@@ -8,13 +8,14 @@
   require('connexionDB.php'); 
 
 
-    $sql1 = "SELECT * FROM produit ORDER BY id_categorie_prod asc;"; 
+    $sql1 = "SELECT * FROM produit;"; 
     $rqt = $cnx->getRequete($sql1);
     $res = $rqt->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql2 = "SELECT id_categorie, nom_categorie, description_categorie FROM categorie;"; 
+    $sql2 = "SELECT id_categorie, nom_categorie, description_categorie  FROM categorie;"; 
     $rqt = $cnx->getRequete($sql2);
     $res2 = $rqt->fetchAll();
+
 
 ?>
 
